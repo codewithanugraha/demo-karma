@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Hot Babe XO Thermal Brush: Gallery Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,7 @@
     font-family:'Jost', sans-serif;
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:transparent;
   }
 
   body{
@@ -37,6 +38,10 @@
     align-items:center;
     justify-content:center;
     padding:36px 16px;
+    padding-left:max(16px, env(safe-area-inset-left));
+    padding-right:max(16px, env(safe-area-inset-right));
+    padding-top:max(36px, env(safe-area-inset-top));
+    padding-bottom:max(36px, env(safe-area-inset-bottom));
   }
 
   .stage{
@@ -88,6 +93,7 @@
     aspect-ratio:1/1;
     overflow:hidden;
     background:var(--blush-deep);
+    touch-action:pan-y;
   }
 
   .track{
@@ -114,11 +120,11 @@
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:38px;
-    height:38px;
+    width:44px;
+    height:44px;
     border-radius:50%;
-    border:none;
-    background:rgba(255,255,255,0.88);
+    border:1px solid rgba(43,34,38,0.07);
+    background:rgba(255,255,255,0.9);
     color:var(--ink);
     display:flex;
     align-items:center;
@@ -126,13 +132,14 @@
     cursor:pointer;
     box-shadow:0 6px 16px rgba(43,34,38,0.22);
     transition:background .2s ease, transform .2s ease;
+    touch-action:manipulation;
   }
 
   .nav-btn:hover{ background:var(--white); transform:translateY(-50%) scale(1.06); }
   .nav-btn:active{ transform:translateY(-50%) scale(0.96); }
   .nav-btn.prev{ left:12px; }
   .nav-btn.next{ right:12px; }
-  .nav-btn svg{ width:16px; height:16px; }
+  .nav-btn svg{ width:18px; height:18px; }
 
   .caption{
     padding:18px 22px 4px;
@@ -209,6 +216,7 @@
     opacity:0.55;
     transition:opacity .2s ease, border-color .2s ease, transform .2s ease;
     background:var(--blush-deep);
+    touch-action:manipulation;
   }
 
   .thumb img{
@@ -227,8 +235,16 @@
   .thumb:hover{ opacity:0.85; }
 
   @media (max-width:380px){
-    .wordmark{ font-size:26px; }
+    body{ padding-left:max(10px, env(safe-area-inset-left)); padding-right:max(10px, env(safe-area-inset-right)); }
+    .wordmark{ font-size:24px; }
+    .proto-tag{ font-size:11px; }
+    .caption{ padding:16px 16px 4px; }
+    .thumbs{ padding:14px 16px 0; }
     .caption-title{ font-size:15.5px; }
+    .caption-desc, .reason-text{ font-size:12.5px; }
+    .nav-btn{ width:40px; height:40px; }
+    .nav-btn.prev{ left:8px; }
+    .nav-btn.next{ right:8px; }
   }
 </style>
 </head>
